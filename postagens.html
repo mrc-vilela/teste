@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ordem Vilela — Postagens</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="img/icon.png" type="image/png">
+</head>
+<body data-theme="light">
+    <div class="top-bar"></div>
+
+    <header class="site-header">
+        <div class="container header-row">
+            <div class="brand">
+                <img class="brand-logo" src="img/icon.png" alt="Ordem Vilela">
+                <div>
+                    <p class="brand-title">Ordem Vilela</p>
+                    <p class="brand-subtitle">Blog Institucional</p>
+                </div>
+            </div>
+            <nav class="nav">
+                <a class="nav-link" href="index.html">Início</a>
+                <a class="nav-link is-active" href="postagens.html">Postagens</a>
+                <a class="nav-link" href="contato.html">Contato</a>
+                <button class="nav-link theme-toggle" type="button">Escuro</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="page">
+        <section class="section">
+            <div class="container">
+                <div class="section-header">
+                    <div>
+                        <h2>Postagens completas</h2>
+                        <p class="muted">Leia todas as análises e reflexões em detalhes.</p>
+                    </div>
+                </div>
+                <div class="grid">
+                    <!-- Postagem 1 -->
+                    <article class="card post-card">
+                        <p class="card-label">07/02/2026</p>
+                        <h3 class="card-title">📜 José Saud e Aorta Comunicações</h3>
+                        <p class="card-text">
+                            Durante a pandemia da Covid-19, a contratação da agência Aorta Comunicações sem licitação pela Prefeitura de Taubaté levantou questionamentos jurídicos e institucionais.
+                            O Ministério Público SP analisou a situação e denunciou ao Tribunal de Justiça SP possíveis irregularidades.
+                            O caso evidencia a importância de processos transparentes e observância da legislação, reforçando a necessidade de governança clara.
+                        </p>
+                        <a class="text-link" href="#">Continuar lendo</a>
+                    </article>
+
+                    <!-- Postagem 2 -->
+                    <article class="card post-card">
+                        <p class="card-label">12/07/2025</p>
+                        <h3 class="card-title">📜 Indicação de leitura: Gestão e Estratégia</h3>
+                        <p class="card-text">
+                            "Criatividade na Gestão de Empresas", de José Carlos Mádio, propõe reflexões sobre liderança, planejamento estratégico e inovação. 
+                            O livro é referência para gestores que buscam unir visão estratégica e execução prática, com foco em resultados sustentáveis e éticos.
+                        </p>
+                        <a class="text-link" href="#">Continuar lendo</a>
+                    </article>
+
+                    <!-- Postagem 3 -->
+                    <article class="card post-card">
+                        <p class="card-label">12/07/2025</p>
+                        <h3 class="card-title">📜 Campanha do PT e referência ao CV</h3>
+                        <p class="card-text">
+                            A análise política indica que campanhas eleitorais precisam se pautar em responsabilidade institucional.
+                            Referências a organizações criminosas em propaganda política levantam debates éticos e legais, exigindo transparência e responsabilidade.
+                        </p>
+                        <a class="text-link" href="#">Continuar lendo</a>
+                    </article>
+
+                    <!-- Postagem 4 -->
+                    <article class="card post-card">
+                        <p class="card-label">01/06/2025</p>
+                        <h3 class="card-title">📜 Observações sobre política local</h3>
+                        <p class="card-text">
+                            A administração local enfrenta críticas sobre eficiência, transparência e atendimento às demandas populares.
+                            Este espaço busca detalhar decisões, projetos e impactos, fornecendo um panorama completo para cidadãos atentos à gestão municipal.
+                        </p>
+                        <a class="text-link" href="#">Continuar lendo</a>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-gradient"></div>
+        <div class="container footer-row">
+            <p>© 2025 Marcus Vilela. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+<script>
+    // Scroll reveal
+    const posts = document.querySelectorAll('.post-card');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if(entry.isIntersecting) entry.target.classList.add('visible');
+        });
+    }, { threshold: 0.2 });
+    posts.forEach(post => observer.observe(post));
+
+    // Theme toggle
+    const themeToggle = document.querySelector('.theme-toggle');
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) document.body.setAttribute('data-theme', savedTheme);
+
+    const updateThemeLabel = () => {
+        const current = document.body.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+        themeToggle.textContent = current === 'dark' ? 'Claro' : 'Escuro';
+    };
+
+    updateThemeLabel();
+    themeToggle?.addEventListener('click', () => {
+        const current = document.body.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+        const next = current === 'dark' ? 'light' : 'dark';
+        document.body.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
+        updateThemeLabel();
+    });
+</script>
+</body>
+</html>
